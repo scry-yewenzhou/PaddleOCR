@@ -118,9 +118,14 @@ MODEL_URLS = {
                     'https://paddleocr.bj.bcebos.com/PP-OCRv3/multilingual/latin_PP-OCRv3_rec_infer.tar',
                     'dict_path': './ppocr/utils/dict/latin_dict.txt'
                 },
+                # 'arabic': {
+                #     'url':
+                #     'https://paddleocr.bj.bcebos.com/PP-OCRv3/multilingual/arabic_PP-OCRv3_rec_infer.tar',
+                #     'dict_path': './ppocr/utils/dict/arabic_dict.txt'
+                # },
                 'arabic': {
                     'url':
-                    'https://paddleocr.bj.bcebos.com/PP-OCRv3/multilingual/arabic_PP-OCRv3_rec_infer.tar',
+                    'https://paddleocr.bj.bcebos.com/PP-OCRv4/multilingual/arabic_PP-OCRv4_rec_infer.tar',
                     'dict_path': './ppocr/utils/dict/arabic_dict.txt'
                 },
                 'cyrillic': {

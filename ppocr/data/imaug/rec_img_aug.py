@@ -25,15 +25,16 @@ from paddle.vision.transforms import Compose
 
 class RecAug(object):
     def __init__(self,
-                 tia_prob=0.4,
-                 crop_prob=0.4,
-                 reverse_prob=0.4,
-                 noise_prob=0.4,
-                 jitter_prob=0.4,
-                 blur_prob=0.4,
-                 hsv_aug_prob=0.4,
+                 tia_prob=0,
+                 crop_prob=0,
+                 reverse_prob=0,
+                 noise_prob=0,
+                 jitter_prob=0,
+                 blur_prob=0,
+                 hsv_aug_prob=0,
                  **kwargs):
         self.tia_prob = tia_prob
+        print(self.tia_prob)
         self.bda = BaseDataAugmentation(crop_prob, reverse_prob, noise_prob,
                                         jitter_prob, blur_prob, hsv_aug_prob)
 
@@ -56,12 +57,12 @@ class RecAug(object):
 
 class BaseDataAugmentation(object):
     def __init__(self,
-                 crop_prob=0.4,
-                 reverse_prob=0.4,
-                 noise_prob=0.4,
-                 jitter_prob=0.4,
-                 blur_prob=0.4,
-                 hsv_aug_prob=0.4,
+                 crop_prob=0,
+                 reverse_prob=0,
+                 noise_prob=0,
+                 jitter_prob=0,
+                 blur_prob=0,
+                 hsv_aug_prob=0,
                  **kwargs):
         self.crop_prob = crop_prob
         self.reverse_prob = reverse_prob
