@@ -16,6 +16,7 @@ import numpy as np
 import paddle
 from paddle.nn import functional as F
 import re
+from bidi.algorithm import get_display
 
 
 class BaseRecLabelDecode(object):
@@ -39,8 +40,8 @@ class BaseRecLabelDecode(object):
             if use_space_char:
                 self.character_str.append(" ")
             dict_character = list(self.character_str)
-            if 'arabic' in character_dict_path:
-                self.reverse = True
+            # if 'arabic' in character_dict_path:
+            #     self.reverse = True
 
         dict_character = self.add_special_char(dict_character)
         self.dict = {}
@@ -92,9 +93,7 @@ class BaseRecLabelDecode(object):
                 conf_list = [0]
 
             text = ''.join(char_list)
-
-            if self.reverse:  # for arabic rec
-                text = self.pred_reverse(text)
+            text = get_display(text, base_dir="L")
 
             result_list.append((text, np.mean(conf_list).tolist()))
         return result_list

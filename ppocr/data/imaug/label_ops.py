@@ -136,6 +136,7 @@ class BaseRecLabelEncode(object):
         return dict_character
 
     def encode(self, text):
+        from bidi.algorithm import get_display
         """convert text-label into text-index.
         input:
             text: text labels of each image. [batch_size]
@@ -150,7 +151,7 @@ class BaseRecLabelEncode(object):
         if self.lower:
             text = text.lower()
         text_list = []
-        for char in text:
+        for char in get_display(text, base_dir="L"):
             if char not in self.dict:
                 # logger = get_logger()
                 # logger.warning('{} is not in dict'.format(char))

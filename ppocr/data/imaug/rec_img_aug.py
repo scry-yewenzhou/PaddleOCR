@@ -28,10 +28,10 @@ class RecAug(object):
                  tia_prob=0,
                  crop_prob=0,
                  reverse_prob=0,
-                 noise_prob=0,
-                 jitter_prob=0,
-                 blur_prob=0,
-                 hsv_aug_prob=0,
+                 noise_prob=0.3,
+                 jitter_prob=0.3,
+                 blur_prob=0.3,
+                 hsv_aug_prob=0.3,
                  **kwargs):
         self.tia_prob = tia_prob
         print(self.tia_prob)
