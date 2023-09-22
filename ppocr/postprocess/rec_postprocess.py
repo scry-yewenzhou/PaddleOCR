@@ -32,11 +32,13 @@ class BaseRecLabelDecode(object):
             self.character_str = "0123456789abcdefghijklmnopqrstuvwxyz"
             dict_character = list(self.character_str)
         else:
-            with open(character_dict_path, "rb") as fin:
+            with open(character_dict_path, "r", encoding="utf-8") as fin:
                 lines = fin.readlines()
                 for line in lines:
-                    line = line.decode('utf-8').strip("\n").strip("\r\n")
-                    self.character_str.append(line)
+                    line = line.strip("\n").strip("\r\n")
+                    for c in line:
+                        self.character_str.append(c)
+            print(len(self.character_str))
             if use_space_char:
                 self.character_str.append(" ")
             dict_character = list(self.character_str)
