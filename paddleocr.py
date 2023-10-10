@@ -551,15 +551,17 @@ class PaddleOCR(predict_system.TextSystem):
         else:
             ocr_res = []
             cls_res = []
-            for idx, img in enumerate(imgs):
-                if not isinstance(img, list):
-                    img = [img]
-                if self.use_angle_cls and cls:
-                    img, cls_res_tmp, elapse = self.text_classifier(img)
-                    if not rec:
-                        cls_res.append(cls_res_tmp)
-                rec_res, elapse = self.text_recognizer(img)
-                ocr_res.append(rec_res)
+            # for idx, img in enumerate(imgs):
+            #     if not isinstance(img, list):
+            #         img = [img]
+            #     if self.use_angle_cls and cls:
+            #         img, cls_res_tmp, elapse = self.text_classifier(img)
+            #         if not rec:
+            #             cls_res.append(cls_res_tmp)
+            #     rec_res, elapse = self.text_recognizer(img)
+            #     ocr_res.append(rec_res)
+            rec_res, elapse = self.text_recognizer(img)
+            ocr_res.append(rec_res)
             if not rec:
                 return cls_res
             return ocr_res
