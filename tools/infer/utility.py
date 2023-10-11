@@ -225,20 +225,10 @@ def create_predictor(args, mode, logger):
                 config.enable_tensorrt_engine(
                     workspace_size=1 << 30,
                     precision_mode=precision,
-                    # max_batch_size=args.max_batch_size,
-                    max_batch_size=1,
-                    min_subgraph_size=5,
-                    use_static=False,
+                    max_batch_size=args.max_batch_size,
+                    min_subgraph_size=args.
+                    min_subgraph_size,  # skip the minmum trt subgraph
                     use_calib_mode=False)
-                    # skip the minmum trt subgraph
-                
-                imgH = int(args.rec_image_shape.split(',')[-2])
-                min_input_shape = {"x": [1, 3, imgH, 10]}
-                max_input_shape = {"x": [args.rec_batch_num, 3, imgH, 2304]}
-                opt_input_shape = {"x": [args.rec_batch_num, 3, imgH, 320]}
-
-                config.set_trt_dynamic_shape_info(
-                    min_input_shape, max_input_shape, opt_input_shape)
 
                 # collect shape
                 trt_shape_f = os.path.join(model_dir,
