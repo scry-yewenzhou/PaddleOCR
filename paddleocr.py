@@ -558,11 +558,10 @@ class PaddleOCR(predict_system.TextSystem):
             #         img, cls_res_tmp, elapse = self.text_classifier(img)
             #         if not rec:
             #             cls_res.append(cls_res_tmp)
+            #     rec_res, elapse = self.text_recognizer(img)
+            #     ocr_res.append(rec_res)
             rec_res, elapse = self.text_recognizer(img)
             ocr_res.append(rec_res)
-            # print(ocr_res)
-            # print(len(ocr_res))
-            # print(len(ocr_res[0]))
             if not rec:
                 return cls_res
             return ocr_res
